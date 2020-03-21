@@ -1,8 +1,43 @@
 
-public class IceCream {
+public class IceCream extends DessertItem{
+protected String typeOfIceCream; 
+private int howMuchPerServing;
 
-	public IceCream() {
-		// TODO Auto-generated constructor stub
-	}
+public IceCream(String newTypeOfIceCream, int newHowMuchPerServing) {
+	this.typeOfIceCream = newTypeOfIceCream; 
+	this.howMuchPerServing = newHowMuchPerServing; 
+}
 
+public int getCost(){
+	return this.howMuchPerServing; 
+}
+
+public String getTypeOfIceCream(){
+	return this.typeOfIceCream; 
+}
+
+public int getHowMuchPerServing() {
+	return this.howMuchPerServing;
+}
+
+public void setHowMuchPerServing(int howMuchPerServing) {
+	this.howMuchPerServing = howMuchPerServing;
+}
+
+public void setTypeOfIceCream(String typeOfIceCream) {
+	this.typeOfIceCream = typeOfIceCream;
+}
+
+public IceCream() {
+	
+}
+
+public String toString() {
+	return this.typeOfIceCream + " " + this.getCost(); 
+}
+
+public static void main(String[] args) {
+	DessertItem iceCream1 = new IceCream("Strawberry Ice Cream",145); 
+	System.out.println(iceCream1.toString());
+}
 }
