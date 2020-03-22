@@ -1,0 +1,209 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
+import javafx.geometry.HPos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.event.EventHandler;
+
+public class javaFx extends Application implements EventHandler<ActionEvent>{
+
+	private TextField _info = new TextField("Number of Items: 0");
+	private String bnames[]={ "Ice Cream", "Candy", "Cookies", "Sundae"};
+	private String lnames[]={"Name", "Price", "Weight", "Price/lbs", "Price/doz", "Number"};
+	private Label labels[]; 
+	private Button buttonsOne[]; 
+	private String bnames2[]={"Enter", "Total"};
+	private String mnames[]={"Reset", "Exit"};
+	private Button buttonsTwo[]; 
+	private TextField tFields[]; 
+	private MenuItem menuitems[]; 
+	private int selecteditem = 0;
+	Checkout Checkout = new Checkout(); 
+	
+	private void setlabels() {
+		labels = new Label[lnames.length]; 
+		for (int index = 0; index < lnames.length; index++) {
+			labels[index] = new Label(lnames[index]); 
+			labels[index].setAlignment(Pos.CENTER); 
+			labels[index].setVisible(true); 
+		}
+	}
+	
+	private void setButtons() {
+		buttonsOne = new Button[bnames.length]; 
+		for (int index = 0; index < bnames.length; index++) {
+			buttonsOne[index] = new Button(bnames[index]); 
+			buttonsOne[index].setOnAction(this);
+		}
+	}
+	
+	private void setButtons2() {
+		buttonsTwo = new Button[bnames2.length]; 
+		for (int index = 0; index < bnames2.length; index++) {
+			buttonsTwo[index] = new Button(bnames2[index]); 
+			buttonsTwo[index].setOnAction(this);
+		}
+	}
+	
+	private void setTextField() {
+		tFields = new TextField[lnames.length];
+		for (int index = 0; index < lnames.length; index++) {
+			tFields[index] = new TextField(); 
+			tFields[index].setVisible(true); 
+		}
+	}
+	
+	private void setMenuBar() {
+		menuitems = new MenuItem[mnames.length]; 
+		for (int index = 0; index < mnames.length; index++) {
+			menuitems[index] = new MenuItem(mnames[index]);
+			menuitems[index].setOnAction(this);
+		}
+	}
+private void resetinfo() {
+	for (int index = 0; index < lnames.length; index++) {
+		tFields[index].setText(""); 
+	}
+}
+private void disablebuttons(int b) {
+	for (int index = 0; index <buttonsOne.length; index++) {
+		if (b != 1) {
+			buttonsOne[index].setDisable(true); 
+		}
+	}
+}
+
+private void inablebuttonsAll() {
+	for (int index = 0; index < buttonsOne.length; index++) {
+		buttonsOne[index].setDisable(false); 
+	}
+}
+
+
+private void inableinfo(int b) {
+for (int index=0; index< lnames.length; index++){
+	if (b ==index){
+		labels[index].setDisable(false);
+		tFields[index].setDisable(false);
+		}
+	}
+}
+
+
+private void disableinfoAll(){
+ for (int index=0; index <lnames.length; index++){
+ labels[index].setDisable(true);
+ tFields[index].setDisable(false);
+ }
+ }
+
+public void actionPerformed( ActionEvent e){
+Object source = e.getSource();
+if (source == menuitems[0]){
+_info.setText("Number of Items: 0");
+resetinfo();
+inablebuttonsAll();
+disableinfoAll();
+}
+else if (source == menuitems[1]){
+	System.exit(1);
+}
+else if (source == buttonsOne[0]){
+inableinfo(0); 
+inableinfo(1); 
+inableinfo(5);
+selecteditem = 0;
+}
+else if (source == buttonsOne[1])
+{
+inableinfo(0);
+inableinfo(3);
+inableinfo(2);
+inableinfo(5); 
+selecteditem=1;
+}
+else if (source == buttonsOne[2]) 
+{
+inableinfo(0); 
+inableinfo(1);
+inableinfo(4); 
+inableinfo(5);
+selecteditem = 2;
+}
+else if (source == buttonsOne[3]) 
+{
+inableinfo(0); //name
+inableinfo(1); //price
+inableinfo(4); //price/doz
+inableinfo(5); //number
+inableinfo(6); // topping
+inableinfo(7); // topping cost
+selecteditem = 3;
+}
+else if (source == buttonsTwo[0]) //Enter
+{
+inablebuttonsAll();
+disableinfoAll();
+try {
+switch (selecteditem) {
+case 0: 
+Checkout.enterItem(new IceCream(tFields[0].getText(), Integer.parseInt(tFields[1].getText())));
+break;
+
+case 1:
+Checkout.enterItem(new Candy(tFields[0].getText(), Double.parseDouble(tFields[2].getText()), Integer.parseInt(tFields[3].getText())
+));
+break; 
+
+case 2: 
+Checkout.enterItem(new Cookie(tFields[0].getText(), Integer.parseInt(tFields[5].getText()),
+Integer.parseInt(tFields[4].getText())));
+break;
+case 3:
+Checkout.enterItem(new Sundae(tFields[0].getText(),Integer.parseInt(tFields[1].getText()), tFields[6].getText(), Integer.parseInt(tFields[7].getText())));
+break;
+ } // end switch
+ _info.setText("Number of items: "+Checkout.numberOfItems());
+ } // end try
+ catch (Exception ref){
+ _info.setText("Invalid Entry, Number of Items: " + Checkout.numberOfItems());
+ }
+ finally {
+ resetinfo();
+ }
+ }
+ else if (source == buttonsTwo[1]){
+ _info.setText("Number of Items: 0");
+ resetinfo();
+ inablebuttonsAll();
+ disableinfoAll();
+ }
+ for (int index=0; index < buttonsOne.length; index++) {
+ if (source == buttonsOne[index]){
+ disablebuttons(index);
+ }
+ }
+ }
+@Override // Override the start method in the Application class
+public void start(Stage receipt) {
+TextField text = new TextField(); 
+class ReceiptGUI{
+
+public ReceiptGUI(String info){
+ text.setText(info);
+ text.setEditable(false);
+ text.setFont(Font.font("Monospaced",FontWeight.BOLD, 20));
+ receipt.show();
+}
+}
+}
+}
