@@ -21,7 +21,8 @@ public String getTypeOfIceCream() {
 
 
  public String toString() { 
-	 return this.typeOfTopping + " Sundae with\n" + exampleSundae.getTypeOfIceCream() + " " + this.getCost(); 
+	 return this.typeOfTopping + " Sundae with\n" + String.format("%1$-" + DessertShoppe.MAX_ITEM_NAME_SIZE + "s"+ "%2$"
+			+ DessertShoppe.COST_WIDTH + "s", exampleSundae.getTypeOfIceCream(), DessertShoppe.cents2dollarsAndCents(this.getCost()));
 	 }
 	 
 

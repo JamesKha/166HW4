@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 
 
 public class Checkout {
@@ -15,7 +14,7 @@ public class Checkout {
 	// numberOfItems method
 	
 	// check why it is not a for loop of the DessertItem elements?
-	public int numberOfItems(DessertItem items) {
+	public int numberOfItems() {
 		return checkoutList.size();
 	}
 	
@@ -42,9 +41,13 @@ public class Checkout {
 //		while (iterator.hasNext()) {
 //			total += iterator.next().getCost();
 //		}
-		for(int i = 0; i < checkoutList.size(); i++) {
-
-			total += ((DessertItem) checkoutList).getCost(); 
+		
+//		for(int i = 0; i < checkoutList.size(); i++) {
+//			total += ((DessertItem) checkoutList).getCost(); 
+//		}
+//		
+		for(DessertItem item : checkoutList) {
+			total += item.getCost();
 		}
 		return total;		// without tax
 	}
@@ -59,12 +62,12 @@ public class Checkout {
 	
 	// toString method
 	public String toString() {
-		String s = DessertShoppe.STORE_NAME + "\n"
+		String s = "\t" + DessertShoppe.STORE_NAME + "\n"
 				 + "\t--------------------\n\n";
-		for(int i = 0; i < checkoutList.size(); i++) {
-			s += String
-              .format("%1$-10s %2$10d", checkoutList, numbers[i]);
-			total += ((DessertItem) checkoutList).getCost(); 
+		for(DessertItem item : checkoutList) {
+//			s += String.format("%1$-10s %2$10d", item.toString(), item.getCost());
+			s += item.toString();
+			s += "\n";
 		}
 		return s;
 	}
