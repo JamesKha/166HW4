@@ -3,7 +3,7 @@
  * @param String typeOfcandy is the name of merchandise
  * @param double howManyPounds recording weight of purchase
  * @param int newPricePerPound is the unit price
- * @author Jimmy K.
+ * @author Jimmy K., Edmund S.
  */
 public class Candy extends DessertItem{
 	private String typeOfCandy; 
@@ -26,7 +26,7 @@ public String toString() {
 	}
 
 
-
+//simple test main class
 public static void main(String[] args) {
 	DessertItem candy1 = new Candy("fudge", 2.30, 89);
 	System.out.println(candy1.toString());

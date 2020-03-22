@@ -41,7 +41,7 @@ public String toString() {
 	return String.format("%1$-" + DessertShoppe.MAX_ITEM_NAME_SIZE + "s"+ "%2$"
 			+ DessertShoppe.COST_WIDTH + "s", this.typeOfIceCream, DessertShoppe.cents2dollarsAndCents(this.getCost()));
 }
-
+//simple test main class
 public static void main(String[] args) {
 	DessertItem iceCream1 = new IceCream("Strawberry Ice Cream",145); 
 	System.out.println(iceCream1.toString());
