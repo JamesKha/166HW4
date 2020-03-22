@@ -62,7 +62,7 @@ public IceCream() {
 }
 
 /**
- * Creates a string format depending on the parameters listed that are specific to the candy: typeOfIceCream,   howMuchPerServing
+ * Creates a string format depending on the parameters listed that are specific to the ice cream: typeOfIceCream,   howMuchPerServing
  *@return a string that includes the parameters and the due cost of the .getCost
  */
 public String toString() {
