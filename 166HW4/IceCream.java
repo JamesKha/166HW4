@@ -33,7 +33,6 @@ public IceCream() {
 }
 
 public String toString() {
-//	return String.format("%1$-10s %2$15d", this.typeOfIceCream , this.getCost());
 	return String.format("%1$-" + DessertShoppe.MAX_ITEM_NAME_SIZE + "s"+ "%2$"
 			+ DessertShoppe.COST_WIDTH + "s", this.typeOfIceCream, DessertShoppe.cents2dollarsAndCents(this.getCost()));
 }

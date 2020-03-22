@@ -14,8 +14,6 @@ public class Candy extends DessertItem{
 	}
 
 public String toString() {
-//	return this.howManyPounds + " @ " + this.pricePerPound+ "/dz\n" + this.typeOfCandy + " " + this.getCost();
-//	return this.howManyPounds + " lbs. @ " + this.pricePerPound+ "/lb.\n" + String.format("%1$-10s %2$15d", this.typeOfCandy, this.getCost());
 	return this.howManyPounds + " lbs. @ " + (double) this.pricePerPound / (double) 100 + "/lb.\n" 
 			+ String.format("%1$-" + DessertShoppe.MAX_ITEM_NAME_SIZE + "s"+ "%2$"
 			+ DessertShoppe.COST_WIDTH + "s", this.typeOfCandy, DessertShoppe.cents2dollarsAndCents(this.getCost()));
