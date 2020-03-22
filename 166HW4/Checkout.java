@@ -1,67 +1,56 @@
 import java.util.ArrayList;
-import java.util.List;
+
 /**
  * Checkout a class used to handle checkout activity
  * @author Jimmy K, Edmund S.
+ * @param  DessertItem item 
  */
 
 public class Checkout {
 	// the list!!
-	private List<DessertItem> checkoutList;
-	
-	// constructor
-	public Checkout() {
-		checkoutList = new ArrayList<DessertItem>();
-	}
-	
-	// numberOfItems method
-	public int numberOfItems() {
-		return checkoutList.size();
-	}
-	
-	// enterItem method with @param DissertItem item to be added
-	public void enterItem(DessertItem item) {
+	ArrayList<DessertItem> checkoutList = new ArrayList<DessertItem>();  
+	 void enterItem(DessertItem item){
 		checkoutList.add(item);
 	}
+	 
+	 
+	/**
+	 * This counts how many items are in the Desert Item Array List 
+	 * @return the number of items within the list  
+	 */
+	public int numberOfItems(){
+		return checkoutList.size(); 
+	}
 	
-	// clear method
+	/**
+	 * Retrieves the amount due from the items' getCost() method and adds them up 
+	 * @return a final cost from all of the items 
+	 */
+	public int totalCost() { 
+		int sum = 0; 
+		for (int index = 0; index < checkoutList.size(); index++) {
+			sum += checkoutList.get(index).getCost();
+		}
+		return sum; 
+	}
+	
+	/**
+	 * takes the amount of of the total cost of the array list and multiplying against the tax rate of the DessertShoppe class 
+	 * @return the tax amount 
+	 */
+	public int totalTax() {
+		int totalTax = (int) Math.round((totalCost() * (DessertShoppe.TAX_RATE/100)));
+		return totalTax;
+	}
 	public void clear() {
 		checkoutList.clear();
 	}
 	
-	// totalCost method
-	/* Caution! note that when you retrieve an element 
-	 * from the list, you will be retrieving an Object 
-	 * thus an explicit cast is needed 
+	/**
+	 * Creates a "receipt" format string, that takes the values from totalCost(),  totalTax(), and numberofItems() with spacing
+	 * listed in the DessertShoppe class 
+	 * @return a string that is formatted from the values collected from the entirety of the objects 
 	 */
-	
-	//!!!UNFAMILIAR CONCEPT! TEST REQUIRED!!!
-	public int totalCost() {
-		int total = 0;
-//		Iterator iterator = checkoutList.iterator();
-//		while (iterator.hasNext()) {
-//			total += iterator.next().getCost();
-//		}
-		
-//		for(int i = 0; i < checkoutList.size(); i++) {
-//			total += ((DessertItem) checkoutList).getCost(); 
-//		}
-//		
-		for(DessertItem item : checkoutList) {
-			total += item.getCost();
-		}
-		return total;		// without tax
-	}
-	
-	// totalTax method 
-	// tax rate is converted from double to integer
-	// using Math.round() type casting
-	public int totalTax() {
-		int totalTax = totalCost() * (int) Math.round(DessertShoppe.TAX_RATE);
-		return totalTax;	// in cents
-	}
-	
-	// toString method
 	public String toString() {
 		/* prints the shop name */
 		String s = "\t" + DessertShoppe.STORE_NAME + "\n"
@@ -82,5 +71,3 @@ public class Checkout {
 			+ DessertShoppe.COST_WIDTH + "s", "Total Cost", 
 			DessertShoppe.cents2dollarsAndCents(this.totalCost() + this.totalTax()));
 	}
-	
-}
