@@ -1,4 +1,10 @@
-
+/**
+ * Cookie, an extended class from Abstract class DessertItem
+ * @param String newTypeOfCookie is the name of merchandise
+ * @param int newNumberOfCookies records number of purchase
+ * @param int newCostPerCookieDozen is the unit price per dz.
+ * @author Jimmy K.
+ */
 public class Cookie extends DessertItem{
 private String typeOfCookie; 
 private int numberOfCookies; 

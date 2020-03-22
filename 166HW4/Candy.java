@@ -1,4 +1,10 @@
-
+/**
+ * Candy, an extended class from Abstract class DessertItem
+ * @param String typeOfcandy is the name of merchandise
+ * @param double howManyPounds recording weight of purchase
+ * @param int newPricePerPound is the unit price
+ * @author Jimmy K.
+ */
 public class Candy extends DessertItem{
 	private String typeOfCandy; 
 	private double howManyPounds;

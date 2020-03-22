@@ -1,4 +1,9 @@
-
+/**
+ * IceCream, an extended class from class IceCream
+ * @param String newTypeOfIceCream is the name of merchandise
+ * @param int newHowMuchPerServing is the unit price of ice cream
+ * @author Jimmy K, Edmund S.
+ */
 public class IceCream extends DessertItem{
 protected String typeOfIceCream; 
 private int howMuchPerServing;

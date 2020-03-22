@@ -1,4 +1,11 @@
-
+/**
+ * Sundae, an extended class from class IceCream
+ * @param String newTypeOfIceCream is the name of merchandise
+ * @param int newcostOfIceCream is the unit price of ice cream
+ * @param String newTypeOfTopping is the name of topping
+ * @param int newCostOfTopping records cost of topping
+ * @author Jimmy K, Edmund S.
+ */
 public class Sundae extends IceCream{
 private String typeOfTopping;
 private int costOfTopping; 
@@ -26,7 +33,7 @@ public String getTypeOfIceCream() {
 	 }
 	 
 
-
+// simple test main class
 public static void main(String[] args) {
 	DessertItem iceCream1 = new Sundae("Choc. Chip Ice Cream",145, "Hot Fudge", 50);
 	System.out.println(iceCream1.toString());
